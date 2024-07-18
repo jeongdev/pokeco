@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Header from "./components/commons/header/Header";
 import AvailablePage from "./pages/AvailablePage";
 import DetailAvailablePage from "./pages/DetailAvailablePage";
+import AvailableFormPage from "./pages/AvailableFormPage";
 import NotFound from "./components/commons/notFound/NotFound";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" element={<Home />} />
         <Route path="/list" element={<AvailablePage />} />
         <Route path="/list/:id" element={<DetailAvailablePage />} />
+        <Route path="/list/form" element={<AvailableFormPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
