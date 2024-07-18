@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 const products = [
   {
     id: 1,
-    name: "Earthen Bottle",
+    morph: ["릴리화이트", "트라이"],
     href: "#",
-    price: "$48",
+    price: "1350000",
     imageSrc:
       "https://tailwindui.com/img/ecommerce-images/category-page-04-image-card-01.jpg",
-    imageAlt:
-      "Tall slender porcelain bottle with natural clay textured body and cork stopper.",
+    sex: "female",
+    birth: "20240501",
+    weight: 24,
+    describe: "hello world",
   },
   {
     id: 2,
-    name: "Nomad Tumbler",
+    morph: ["노멀"],
     href: "#",
     price: "$35",
     imageSrc:
@@ -24,7 +26,7 @@ const products = [
   },
   {
     id: 3,
-    name: "Focus Paper Refill",
+    morph: ["트익할"],
     href: "#",
     price: "$89",
     imageSrc:
@@ -34,7 +36,7 @@ const products = [
   },
   {
     id: 4,
-    name: "Machined Mechanical Pencil",
+    morph: ["Machined Mechanical Pencil"],
     href: "#",
     price: "$35",
     imageSrc:
@@ -47,28 +49,34 @@ const products = [
 
 export default function Available() {
   return (
-    <article className="bg-white">
-      <div className="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
-        <h2 className="sr-only">Products</h2>
+    <section className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
+      {products.map((product) => (
+        <Link key={product.id} to={`/list/${product.id}`} className="group">
+          <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
+            <img
+              alt={product.imageAlt}
+              src={product.imageSrc}
+              className="h-full w-full object-cover object-center group-hover:opacity-75"
+            />
+          </div>
 
-        <section className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-          {products.map((product) => (
-            <Link key={product.id} to={`/list/${product.id}`} className="group">
-              <div className="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
-                <img
-                  alt={product.imageAlt}
-                  src={product.imageSrc}
-                  className="h-full w-full object-cover object-center group-hover:opacity-75"
-                />
-              </div>
-              <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-              <p className="mt-1 text-lg font-medium text-gray-900">
-                {product.price} 원
-              </p>
-            </Link>
-          ))}
-        </section>
-      </div>
-    </article>
+          <div className="flex flex-col gap-1">
+            <div className="mt-4 flex gap-1">
+              {product.morph.map((item) => (
+                <span className="text-gray-700">{item}</span>
+              ))}
+            </div>
+            <div>
+              <span className="inline-flex items-center rounded-md bg-indigo-50 px-2 py-1 text-sm font-medium text-primary ring-1 ring-inset ring-indigo-700/10">
+                암컷
+              </span>
+            </div>
+            <p className="mt-1 text-base font-semibold text-gray-900">
+              {product.price} 원
+            </p>
+          </div>
+        </Link>
+      ))}
+    </section>
   );
 }
