@@ -28,19 +28,14 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="bg-white">
+    <header className="w-full absolute top-0 left-1/2 -translate-x-1/2 max-w-screen-sm z-10">
       <nav
         aria-label="Global"
         className="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8"
       >
         <h1 className="flex lg:flex-1">
-          <Link to="/" className="-m-1.5 p-1.5">
-            <span className="sr-only">Your Company</span>
-            <img
-              alt=""
-              src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
-              className="h-8 w-auto"
-            />
+          <Link to="/" className="p-1.5">
+            <span className="anton text-primary text-4xl">POKECO</span>
           </Link>
         </h1>
         <div className="flex lg:hidden">
@@ -53,7 +48,7 @@ export default function Header() {
             <Bars3Icon aria-hidden="true" className="h-6 w-6" />
           </button>
         </div>
-        {nav.map((item, index) => {
+        {/* {nav.map((item, index) => {
           return item.children ? (
             <PopoverGroup key={index} className="hidden lg:flex lg:gap-x-12">
               <Popover className="relative">
@@ -96,21 +91,21 @@ export default function Header() {
               {item.name}
             </NavLink>
           );
-        })}
+        })} */}
 
-        <div className="hidden lg:flex lg:flex-1 lg:justify-end">
+        {/* <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Link
             href="#"
             className="text-sm font-semibold leading-6 text-gray-900"
           >
             Log in <span aria-hidden="true">&rarr;</span>
           </Link>
-        </div>
+        </div> */}
       </nav>
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
-        className="lg:hidden"
+        className="lg:hidden z-50"
       >
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
