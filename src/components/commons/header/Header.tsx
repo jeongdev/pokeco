@@ -4,13 +4,17 @@ import { Dialog, DialogPanel } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const nav = [
-  { name: "about,", href: "/about" },
-  { name: "분양리스트", href: "/list" },
-  { name: "caresheet", href: "#" },
-  { name: "blog", href: "#" },
+  { name: "about,", href: "/about", target: "" },
+  {
+    name: "분양리스트",
+    href: "https://www.feedle.me/profile/5d35b503-b284-4807-95c5-f3807f702a06",
+    target: "_blank",
+  },
+  { name: "caresheet", href: "/caresheet", target: "" },
+  { name: "blog", href: "https://blog.naver.com/ragdolll", target: "_blank" },
 ];
 
-export default function Header() {
+export default function Header(): JSX.Element {
   const [mobileMenuOpen, setMobileMenuOpen] = useState<boolean>(false);
 
   return (
@@ -24,7 +28,7 @@ export default function Header() {
             <span className="anton text-primary text-4xl">POKECO</span>
           </Link>
         </h1>
-        <div className="flex lg:hidden">
+        <div className="flex">
           <button
             type="button"
             onClick={() => setMobileMenuOpen(true)}
@@ -38,7 +42,7 @@ export default function Header() {
       <Dialog
         open={mobileMenuOpen}
         onClose={setMobileMenuOpen}
-        className="lg:hidden z-50"
+        className="z-50"
       >
         <div className="fixed inset-0 z-10" />
         <DialogPanel className="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
@@ -60,13 +64,15 @@ export default function Header() {
               <XMarkIcon aria-hidden="true" className="h-6 w-6" />
             </button>
           </div>
-          <div className="mt-6 flow-root">
+          <section className="mt-6 flow-root">
             <div className="-my-6 divide-y divide-gray-500/10">
               <div className="space-y-2 py-6">
                 {nav.map((item, index) => (
                   <Link
                     key={index}
                     to={item.href}
+                    target={item.target}
+                    onClick={() => setMobileMenuOpen(false)}
                     className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                   >
                     {item.name}
@@ -74,7 +80,7 @@ export default function Header() {
                 ))}
               </div>
             </div>
-          </div>
+          </section>
         </DialogPanel>
       </Dialog>
     </header>
