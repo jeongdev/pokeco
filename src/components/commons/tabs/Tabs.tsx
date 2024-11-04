@@ -11,14 +11,14 @@ type Props = {
 
 export default function Tabs({ items }: Props): JSX.Element {
   return (
-    <div className="flex w-full justify-center pt-10 px-4">
+    <div className="flex w-full justify-center">
       <div className="w-full">
         <TabGroup>
           <TabList className="flex gap-4">
             {items.map((item: Category, index: number) => (
               <Tab
                 key={index}
-                className="w-1/2 capitalize rounded-full py-1 px-3 text-sm/6 font-semibold focus:outline-none data-[selected]:bg-white/50 data-[hover]:bg-white/5 data-[selected]:data-[hover]:bg-white/10 data-[focus]:outline-1 data-[focus]:outline-white"
+                className="w-1/2 capitalize rounded-full py-1 px-3 text-sm/6 font-semibold focus:outline-none data-[selected]:bg-white/50 data-[hover]:bg-white/5 data-[selected]:data-[hover]:bg-white/10"
               >
                 {item.name}
               </Tab>
@@ -26,7 +26,7 @@ export default function Tabs({ items }: Props): JSX.Element {
           </TabList>
           <TabPanels className="mt-3">
             {items.map((item: Category, index: number) => (
-              <TabPanel key={index} className="rounded-xl bg-white/5 p-3">
+              <TabPanel key={index} className="rounded-xl bg-white/5 p-3 pt-7">
                 {item.posts}
               </TabPanel>
             ))}
