@@ -8,6 +8,7 @@ import DetailAvailablePage from "./pages/DetailAvailablePage";
 import AvailableFormPage from "./pages/AvailableFormPage";
 import NotFound from "./components/commons/notFound/NotFound";
 import AboutPage from "./pages/AboutPage";
+import CaresheetPage from "./pages/CaresheetPage";
 
 const App: React.FC = () => {
   return (
@@ -17,6 +18,7 @@ const App: React.FC = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<AboutPage />} />
+          <Route path="/caresheet" element={<CaresheetPage />} />
           <Route path="/list" element={<AvailablePage />} />
           <Route path="/list/:id" element={<DetailAvailablePage />} />
           <Route path="/list/form" element={<AvailableFormPage />} />
